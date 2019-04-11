@@ -20,7 +20,7 @@ class CustomerController extends Controller
 
     public function index()
     {
-    
+        
     }
 
     public function store(Request $request)

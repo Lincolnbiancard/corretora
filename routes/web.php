@@ -47,4 +47,22 @@ Route::put('/customer/update/{id}', 'CustomerController@update');
 
 Route::delete('/customer/destroy/{id}', 'CustomerController@destroy');
 
+/*
+|--------------------------------------------------------------------------
+| ROUTES SHARES
+|--------------------------------------------------------------------------
+|
+| Rota para manipulação das AÇÕES
+|
+*/
 
+Route::resource('/listshares', 'ShareController'); 
+
+Route::get('/formshare', 'ShareController@formShare');
+
+Route::post('/share/store', 'ShareController@store'); 
+
+Route::get('/share/show/{id}', 'ShareController@show');
+Route::put('/share/update/{id}', 'ShareController@update');
+
+Route::delete('/share/destroy/{id}', 'ShareController@destroy');
