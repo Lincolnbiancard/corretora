@@ -33,3 +33,18 @@ Route::delete('/destroy/{id}', 'BrokerController@destroy');
 |
 */
 
+Route::resource('/', 'CustomerController'); 
+
+Route::get('/listcustomer', 'CustomerController@listCustomer'); 
+
+Route::get('/formcustomer', 'CustomerController@formCustomerCreate');
+
+Route::post('/store', 'CustomerController@store'); 
+
+Route::get('/customer/show/{id}', 'CustomerController@show');
+
+Route::put('/customer/update/{id}', 'CustomerController@update');
+
+Route::delete('/customer/destroy/{id}', 'CustomerController@destroy');
+
+

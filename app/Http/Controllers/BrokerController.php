@@ -15,7 +15,6 @@ class BrokerController extends Controller
         $this->brokers = $brokers;
     }
 
-
     public function index()
     {
         $brokers = $this->brokers->all();
@@ -43,7 +42,7 @@ class BrokerController extends Controller
         $brokers = $this->brokers->find($id);
         $brokers->update($request);
 
-        return redirect('/');
+        return redirect('listbrokers');
     }
 
     public function destroy($id)
@@ -61,6 +60,5 @@ class BrokerController extends Controller
     public function formCreate() {
         return view('formBroker');
     }
-
 
 }
