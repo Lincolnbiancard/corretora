@@ -64,7 +64,7 @@ class CustomerController extends Controller
     }
 
     public function listCustomer() {
-        $customers = $this->customers->all();
+        $customers = $this->customers->with('brokers')->get();
         
         return view('listCustomer')->with('customers', $customers);
     }

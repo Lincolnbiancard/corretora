@@ -27,7 +27,7 @@ class BrokerController extends Controller
         $data = $request->all();
         $this->brokers->create($data);
 
-        return redirect('/');
+        return redirect('/listbrokers');
     }
 
     public function show($id)

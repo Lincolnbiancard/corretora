@@ -12,7 +12,7 @@ class Customers extends Model
 
     public function brokers()
     {        
-        return $this->hasMany('App\Models\Brokers', 'preferencial_broker', 'id');
+        return $this->hasOne('App\Models\Brokers', 'id', 'preferencial_broker');
     }
 
 }
