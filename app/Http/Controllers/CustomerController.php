@@ -65,7 +65,27 @@ class CustomerController extends Controller
 
     public function listCustomer() {
         $customers = $this->customers->all();
+
+        $brokerName = [];
+        foreach ($customers as $h) {
+            $brokerName[$h->id] = [];
+            if (gettype($h->preferencial_broker) == 'array') {
+                foreach ($h->preferencial_broker as $broker) {
+                    array_push($brokerName[$h->id], Brokers::find($broker));
+                }
+            } else {
+                array_push($brokerName[$h->id], Brokers::find($h->preferencial_broker));
+            }
+            
+        }
+
+        $result['customers'] = $customers;
+        $result['brokerName'] = $brokerName;
+
+
         
-        return view('listCustomer')->with('customers', $customers);
+        
+        
+        return view('listCustomer')->with('customers', $result);
     }
 }

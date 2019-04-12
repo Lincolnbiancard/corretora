@@ -10,7 +10,7 @@
                         <h4 class="mb-0">Cadastro de Cliente</h4>
                     </div>
                     <div class="card-body">
-                        <form class="form" role="form" autocomplete="off" action="store" method="POST">
+                        <form class="form" role="form" autocomplete="off" action="customer/store" method="POST">
                             {{ csrf_field() }}
                             
                             <div class="form-group row">

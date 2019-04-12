@@ -17,6 +17,8 @@
                 <a class="dropdown-item" href="{{ url('listbrokers') }}">Corretores</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('listcustomer') }}">Clientes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('listshares') }}">Ações</a>
                 </div>
             </li>
         </ul>
