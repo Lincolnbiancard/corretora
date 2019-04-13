@@ -114,7 +114,9 @@ class HistoryController extends Controller
         return view('listHistory', [
             'history' => $history,
             'criterio' => $request->criterio
-            ])->with('history', $history);
+            ])->with('history', $history)
+                ->with('customers', $customers)
+                ->with('brokers', $brokers);
     }
 
 }

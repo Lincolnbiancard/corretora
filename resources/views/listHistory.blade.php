@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ url('formhistory') }}" class="btn btn-primary btn-sm">Ações</a>
-    
+
     {{-- Buscar --}}
     <form style=" margin-top: 15px;" action="{{  url('listhistory') }}" method="POST">
             <div class="input-group">
