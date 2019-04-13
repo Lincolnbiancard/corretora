@@ -45,30 +45,18 @@ class HistoryController extends Controller
 
     public function store(Request $request)
     {
-        $request = $request->all();
-        $history = $this->history->create($request);
-
-        $history = $this->history->all();
-        $shares = $this->shares->all();
-        $customers = $this->customers->all();
-
-        // Diminuir AMOUNT das AÇÔES
-        foreach ($history as $h) {
-            if($h->type === 'compra'){
-                foreach ($shares as $share) {
-                    $historic = $this->shares->update([
-                        'amount'  => $share->amount -= $hmquantity
-                    ]);
-                    DB::commit();
-                }
-            }else {
-                foreach ($shares as $share) {
-                    $historic = $this->shares->update([
-                        'amount'  => $share->amount += $h->quantity
-                    ]);
-                    DB::commit();
-                }
-            }
+        $share = $this->shares->find($request->id_share);
+        $history = $request->all();
+        $history['base_price'] = $share->base_price;
+        $history = $this->history->create($history);
+        
+        switch ($request->type) {
+            case 'compra':
+                $share->update(['amount' => $share->amount - $request->quantity]);
+                break;
+            case 'venda':
+                $share->update(['amount' => $share->amount + $request->quantity]);
+                break;
         }
 
         return redirect('formhistory');

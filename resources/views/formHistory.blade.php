@@ -63,15 +63,6 @@
                             </div>  
                         </div>
 
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label form-control-label">Preço Médio</label>
-                                <div class="col-lg-9">
-                                    <input class="form-control" id="base_price" name="base_price" type="text">
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
