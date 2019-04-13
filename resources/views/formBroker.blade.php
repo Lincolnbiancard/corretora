@@ -12,7 +12,7 @@
                             </div>
                             
                             <div class="card-body">
-                                <form class="form" role="form" autocomplete="off" action="broker/store" method="POST">
+                                <form class="form" role="form" autocomplete="off" action="broker" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Nome do Corretor</label>

@@ -9,18 +9,11 @@
 |
 */
 
-Route::get('/listbrokers', 'BrokerController@index');
-
-Route::post('/broker/store', 'BrokerController@store');
-
 Route::get('/layout', 'BrokerController@layout');
 
 Route::get('/formbroker', 'BrokerController@formCreate');
 
-Route::get('/show/{id}', 'BrokerController@show');
-Route::put('/update/{id}', 'BrokerController@update');
-
-Route::delete('/destroy/{id}', 'BrokerController@destroy');
+Route::resource('/broker', 'BrokerController');
 
 
 
@@ -46,16 +39,9 @@ Route::resource('/customer', 'CustomerController');
 |
 */
 
-Route::resource('/listshares', 'ShareController'); 
+Route::resource('/share', 'ShareController'); 
 
 Route::get('/formshare', 'ShareController@formShare');
-
-Route::post('/share/store', 'ShareController@store'); 
-
-Route::get('/share/show/{id}', 'ShareController@show');
-Route::put('/share/update/{id}', 'ShareController@update');
-
-Route::delete('/share/destroy/{id}', 'ShareController@destroy');
 
 
 /*
@@ -80,4 +66,4 @@ Route::delete('/history/destroy/{id}', 'HistoryController@destroy');
 
 Route::post('/listhistory/{param?}', 'HistoryController@search');
 
-
+Route::post('/search/{param}', 'SearchController@search');

@@ -17,7 +17,11 @@
                         @foreach($customers as $customer)
                             <tr>
                                 <td>{{ $customer->id . " - " . $customer->name}}</td>
-                                <td>{{ $customer->brokers->name }}</td>
+                                @if(is_null($customer->brokers['name']))
+                                <td>Sem corretor associado</td>
+                                @else
+                                <td>{{ $customer->brokers['name'] }}</td>
+                                @endif
                                 <td>
                                     <a type="submit" method="get" href="customer/{{ $customer->id }}" class="btn btn-primary btn-sm">Atualizar</a></td>
                                     <td>

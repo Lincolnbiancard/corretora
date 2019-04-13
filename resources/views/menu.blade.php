@@ -14,11 +14,11 @@
                     Menu
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url('listbrokers') }}">Corretores</a>
+                <a class="dropdown-item" href="{{ url('broker') }}">Corretores</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('customer') }}">Clientes</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('listshares') }}">Ações</a>
+                    <a class="dropdown-item" href="{{ url('share') }}">Ações</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('listhistory') }}">Movimentação de Ações</a>
                 </div>

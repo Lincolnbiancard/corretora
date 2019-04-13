@@ -27,7 +27,7 @@ class BrokerController extends Controller
         $data = $request->all();
         $this->brokers->create($data);
 
-        return redirect('/listbrokers');
+        return redirect('/broker');
     }
 
     public function show($id)
@@ -42,7 +42,7 @@ class BrokerController extends Controller
         $brokers = $this->brokers->find($id);
         $brokers->update($request);
 
-        return redirect('listbrokers');
+        return redirect('broker');
     }
 
     public function destroy($id)
