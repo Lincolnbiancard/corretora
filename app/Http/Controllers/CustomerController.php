@@ -20,7 +20,9 @@ class CustomerController extends Controller
 
     public function index()
     {
+        $customers = $this->customers->with('brokers')->get();
         
+        return view('listcustomer')->with('customers', $customers);
     }
 
     public function store(Request $request)
@@ -28,7 +30,7 @@ class CustomerController extends Controller
         $data = $request->all();
         $this->customers->create($data);
 
-        return redirect('listcustomer');
+        return redirect('customer');
     }
 
 
@@ -45,7 +47,7 @@ class CustomerController extends Controller
         $customers = $this->customers->find($id);
         $customers->update($request);
 
-        return redirect('listcustomer');
+        return redirect('customer');
     }
 
     public function destroy($id)
@@ -53,7 +55,7 @@ class CustomerController extends Controller
         $customers = $this->customers->find($id);
         $customers->delete();
 
-        return redirect('listcustomer');
+        return redirect('customer');
     }
 
     public function formCustomerCreate() {
@@ -61,11 +63,5 @@ class CustomerController extends Controller
         $brokers = $this->brokers->all();
         
         return view('formCustomer')->with('brokers', $brokers);
-    }
-
-    public function listCustomer() {
-        $customers = $this->customers->with('brokers')->get();
-        
-        return view('listCustomer')->with('customers', $customers);
     }
 }

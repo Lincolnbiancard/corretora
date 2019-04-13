@@ -32,7 +32,7 @@ class ShareController extends Controller
         $data = $request->all();
         $this->shares->create($data);
 
-        return redirect('listshares');
+        return redirect('share');
     }
 
 
@@ -49,7 +49,7 @@ class ShareController extends Controller
         $shares = $this->shares->find($id);
         $shares->update($request);
 
-        return redirect('listshares');
+        return redirect('share');
     }
 
     public function destroy($id)
@@ -57,6 +57,6 @@ class ShareController extends Controller
         $shares = $this->shares->find($id);
         $shares->delete();
 
-        return redirect('listshares'); 
+        return redirect('share'); 
     }
 }

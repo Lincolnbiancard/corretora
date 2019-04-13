@@ -11,7 +11,7 @@
                                 <h4 class="mb-0">Atualizando o Cliente {{ $customers->name }}</h4>
                             </div>
                             <div class="card-body">
-                            <form class="form" role="form" action="{{ url('/customer/update/' . $customers->id) }}" method="POST">
+                            <form class="form" role="form" action="{{ url('/customer/' . $customers->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="PUT">
                                     <div class="form-group row">

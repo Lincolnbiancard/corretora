@@ -21,9 +21,9 @@
                                 <td>{{ $share->base_price }}</td>
                                 <td>{{ $share->amount }}</td>
                                 <td>
-                                    <a type="submit" method="get" href="share/show/{{ $share->id }}" class="btn btn-primary btn-sm">Atualizar</a></td>
+                                    <a type="submit" method="get" href="share/{{ $share->id }}" class="btn btn-primary btn-sm">Atualizar</a></td>
                                 <td>
-                                    <form action="share/destroy/{{ $share->id }}" method="post">     
+                                    <form action="share/{{ $share->id }}" method="post">     
                                         <input class="btn btn-danger btn-sm" type="submit" value="Excluir" />
                                         <input type="hidden" name="_method" value="delete" />
                                         {!! csrf_field() !!}

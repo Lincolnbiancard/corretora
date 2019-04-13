@@ -4,10 +4,10 @@
 <a href="{{ url('formhistory') }}" class="btn btn-primary btn-sm">Ações</a>
 
     {{-- Buscar --}}
-    <form style=" margin-top: 15px;" action="{{  url('listhistory') }}" method="POST">
+    <form style=" margin-top: 15px;" action="{{  url('search/history') }}" method="POST">
             <div class="input-group">
                 {{ csrf_field() }}
-                <input type="text" class="form-control col-sm-8" name="criterio" placeholder="Digite um ID, uma letra ou palavra">
+                <input type="text" class="form-control col-sm-8" name="search" placeholder="Digite um ID, uma letra ou palavra" required>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Buscar</button>
                 </span>
@@ -26,15 +26,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($history as $h)
+                    @if(count((array)$history) != 1)
                         <tr>
-                            <td>{{ $h->customers->name }}</td>
-                            <td>{{ $h->shares->name }}</td>
-                            <td>{{ $h->quantity }}</td>
-                            <td>{{ $h->base_price }}</td>
-                            <td>{{ $h->updated_at }}</td>
+                        
+                            <td>{{ $history->customers->name }}</td>
+                            <td>{{ $history->shares['name'] }}</td>
+                            <td>{{ $history->quantity }}</td>
+                            <td>{{ $history->base_price }}</td>
+                            <td>{{ $history->updated_at }}</td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach($history as $h)
+                            <tr>
+                                <td>{{ $h->customers->name }}</td>
+                                <td>{{ $h->shares['name'] }}</td>
+                                <td>{{ $h->quantity }}</td>
+                                <td>{{ $h->base_price }}</td>
+                                <td>{{ $h->updated_at }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

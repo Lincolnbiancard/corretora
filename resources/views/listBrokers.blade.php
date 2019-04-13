@@ -19,9 +19,9 @@
                     <tr>
                         <td>{{ $broker->name }}</td>
                         <td>
-                            <a type="submit" method="get" href="show/{{ $broker->id }}" class="btn btn-primary btn-sm">Atualizar</a></td>
+                            <a type="submit" method="get" href="broker/{{ $broker->id }}" class="btn btn-primary btn-sm">Atualizar</a></td>
                         <td>
-                            <form action="destroy/{{ $broker->id }}" method="post">     
+                            <form action="broker/{{ $broker->id }}" method="post">     
                                 <input class="btn btn-danger btn-sm" type="submit" value="Excluir" />
                                 <input type="hidden" name="_method" value="delete" />
                                 {!! csrf_field() !!}
