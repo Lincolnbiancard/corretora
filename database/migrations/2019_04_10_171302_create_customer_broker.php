@@ -11,6 +11,7 @@ class CreateCustomerBroker extends Migration
         Schema::create('customer_broker', function (Blueprint $table) {
             $table->unsignedBigInteger('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->unsignedBigInteger('broker_id')->references('id')->on('brokers')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

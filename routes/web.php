@@ -65,3 +65,28 @@ Route::get('/share/show/{id}', 'ShareController@show');
 Route::put('/share/update/{id}', 'ShareController@update');
 
 Route::delete('/share/destroy/{id}', 'ShareController@destroy');
+
+
+/*
+|--------------------------------------------------------------------------
+| ROUTES HISTORY
+|--------------------------------------------------------------------------
+|
+| Rota paara COMPRA E VENDA DE AÇÕES 
+|
+*/
+
+Route::resource('/listhistory', 'HistoryController'); 
+
+Route::get('/formhistory', 'HistoryController@formHistory');
+
+Route::post('/history/store', 'HistoryController@store'); 
+
+Route::get('/history/show/{id}', 'HistoryController@show');
+Route::put('/history/update/{id}', 'HistoryController@update');
+
+Route::delete('/history/destroy/{id}', 'HistoryController@destroy');
+
+Route::post('/listhistory/{param?}', 'HistoryController@search');
+
+

@@ -14,7 +14,9 @@ class CreateTableHistory extends Migration
             $table->unsignedBigInteger('id_share')->references('id')->on('shares')->onDelete('cascade');
             $table->unsignedBigInteger('id_customer')->references('id')->on('customers')->onDelete('cascade');
             $table->string('quantity');
+            $table->string('type');
             $table->unsignedBigInteger('base_price')->references('base_price')->on('shares')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

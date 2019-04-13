@@ -3,82 +3,118 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customers;
+use App\Models\Brokers;
+use App\Models\History;
+use App\Models\Shares;
+use DB;
 
 class HistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    private $history;
+    private $customers;
+    private $brokers;
+    private $shares;
+
+    public function __construct(Customers $customers, Brokers $brokers, Shares $shares, History $history) {
+        $this->customers = $customers;
+        $this->brokers = $brokers;
+        $this->shares = $shares;
+        $this->history = $history;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index($param = null, Request $request)
+    {
+
+        if (is_null($param)) {
+            $history = $this->history->all();
+        } else if (strlen($param) == 1 && !is_numeric($param)) {
+            $history = $this->history
+            ->where('name', 'LIKE', $param . '%');
+        } 
+        
+        return view('listHistory')->with('history', $history);
+    }
+
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request = $request->all();
+        $history = $this->history->create($request);
+
+        $history = $this->history->all();
+        $shares = $this->shares->all();
+        $customers = $this->customers->all();
+
+        // Diminuir AMOUNT das AÇÔES
+        foreach ($history as $h) {
+            if($h->type === 'compra'){
+                foreach ($shares as $share) {
+                    $historic = $this->shares->update([
+                        'amount'  => $share->amount -= $hmquantity
+                    ]);
+                    DB::commit();
+                }
+            }else {
+                foreach ($shares as $share) {
+                    $historic = $this->shares->update([
+                        'amount'  => $share->amount += $h->quantity
+                    ]);
+                    DB::commit();
+                }
+            }
+        }
+
+        return redirect('formhistory');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         //
     }
+
+    public function formHistory(){
+        $history = $this->history->all();
+        $shares = $this->shares->all();
+        $customers = $this->customers->all();
+
+        
+        return view('formHistory')->with('shares', $shares)->with('customers', $customers);
+    }
+
+    public function search(Request $request){
+        $history = $this->history
+            ->where('name', 'LIKE', '%' . $request->criterio . '%')
+            ->orWhere('id', $request->criterio)
+            ->paginate(15);
+        
+        return view('listHistory', [
+            'history' => $history,
+            'criterio' => $request->criterio
+            ])->with('history', $history);
+    }
+
 }

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shares extends Model
 {
-    public $timestamps = false; 
 
     protected $fillable = ['id', 'name', 'base_price', 'amount'];
 

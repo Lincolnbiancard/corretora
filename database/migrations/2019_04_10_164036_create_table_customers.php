@@ -17,6 +17,7 @@ class CreateTableCustomers extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('preferencial_broker')->references('id')->on('brokers')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

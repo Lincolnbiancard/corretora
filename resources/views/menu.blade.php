@@ -19,6 +19,8 @@
                     <a class="dropdown-item" href="{{ url('listcustomer') }}">Clientes</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('listshares') }}">Ações</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('listhistory') }}">Movimentação de Ações</a>
                 </div>
             </li>
         </ul>

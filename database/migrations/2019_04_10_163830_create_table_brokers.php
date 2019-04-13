@@ -16,6 +16,7 @@ class CreateTableBrokers extends Migration
         Schema::create('brokers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->timestamps();
         });
     }
 

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customers extends Model
 {
-    public $timestamps = false; 
 
     protected $fillable = ['id', 'name', 'preferencial_broker'];
 

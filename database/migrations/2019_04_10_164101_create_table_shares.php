@@ -18,6 +18,7 @@ class CreateTableShares extends Migration
             $table->string('name');
             $table->decimal('base_price', 10, 2);
             $table->string('amount');
+            $table->timestamps();
         });
     }
 
