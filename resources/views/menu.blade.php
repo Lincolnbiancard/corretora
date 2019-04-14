@@ -21,6 +21,8 @@
                     <a class="dropdown-item" href="{{ url('share') }}">Ações</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('listhistory') }}">Movimentação de Ações</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('listbought') }}">Ranking de Ações</a>
                 </div>
             </li>
         </ul>
