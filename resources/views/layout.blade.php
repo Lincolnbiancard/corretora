@@ -20,5 +20,6 @@
     </head>
     <body>
         @include('menu')
+        @yield('scripts')
     </body>
 </html>

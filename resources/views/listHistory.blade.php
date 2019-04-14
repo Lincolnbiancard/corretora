@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+
 <a href="{{ url('formhistory') }}" class="btn btn-primary btn-sm">Ações</a>
 
     {{-- Buscar --}}
@@ -22,17 +23,18 @@
                         <th>Ação</th>
                         <th>Quantidade</th>
                         <th>Preço Médio</th>
+                        <th>Movimentação</th>
                         <th>Última Movimentação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if(count((array)$history) != 1)
                         <tr>
-                        
                             <td>{{ $history->customers->name }}</td>
                             <td>{{ $history->shares['name'] }}</td>
                             <td>{{ $history->quantity }}</td>
                             <td>{{ $history->base_price }}</td>
+                            <td>{{ $history->type }}</td>
                             <td>{{ $history->updated_at }}</td>
                         </tr>
                     @else
@@ -42,6 +44,7 @@
                                 <td>{{ $h->shares['name'] }}</td>
                                 <td>{{ $h->quantity }}</td>
                                 <td>{{ $h->base_price }}</td>
+                                <td>{{ $h->type }}</td>
                                 <td>{{ $h->updated_at }}</td>
                             </tr>
                         @endforeach

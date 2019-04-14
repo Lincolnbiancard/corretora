@@ -20,12 +20,21 @@
                                     <select id="id_share" name="id_share" placeholder="Ação" 
                                     class="form-control" required="true">
                                             @foreach($shares as $share)
-                                                <option value="{{$share->id}}">{{$share->name}}</option>
+                                <option data-base-price="{{$share->base_price}}" value="{{$share->id}}">{{$share->name}}</option>
                                             @endforeach 
                                     </select>
                                 </div>
                             </div>  
-                        </div>   
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Preço Base</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" id="base_price" name="base_price" type="text" disabled>
+                                </div>
+                            </div>
+                        </div>
                         
                         <div class="card-body">
                             <div class="form-group row">
@@ -75,5 +84,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
+@endsection
+
+@section('scripts')
+    <script>
+        $(window).ready(function(){
+            $('#base_price').val(($('option:selected', this).data('base-price')));
+
+            $('#id_share').change(function(){
+                $('#base_price').val(($('option:selected', this).data('base-price')));
+            });
+        });
+    </script>
 @endsection

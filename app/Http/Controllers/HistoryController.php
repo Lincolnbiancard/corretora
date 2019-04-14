@@ -36,11 +36,6 @@ class HistoryController extends Controller
         return view('listHistory')->with('history', $history);
     }
 
-    
-    public function create()
-    {
-        //
-    }
 
 
     public function store(Request $request)
@@ -66,12 +61,6 @@ class HistoryController extends Controller
     {
         //
     }
-
-    public function edit($id)
-    {
-        //
-    }
-
    
     public function update(Request $request, $id)
     {
@@ -91,20 +80,6 @@ class HistoryController extends Controller
 
         
         return view('formHistory')->with('shares', $shares)->with('customers', $customers);
-    }
-
-    public function search(Request $request){
-        $history = $this->history
-            ->where('name', 'LIKE', '%' . $request->criterio . '%')
-            ->orWhere('id', $request->criterio)
-            ->paginate(15);
-        
-        return view('listHistory', [
-            'history' => $history,
-            'criterio' => $request->criterio
-            ])->with('history', $history)
-                ->with('customers', $customers)
-                ->with('brokers', $brokers);
     }
 
 }

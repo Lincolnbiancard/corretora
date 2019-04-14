@@ -39,7 +39,7 @@ Route::resource('/customer', 'CustomerController');
 |
 */
 
-Route::resource('/share', 'ShareController'); 
+Route::resource('/share', 'ShareController');
 
 Route::get('/formshare', 'ShareController@formShare');
 
