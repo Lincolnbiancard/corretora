@@ -14,9 +14,10 @@
                 </thead>
                 {{-- CORPO TABELA --}}
                 <tbody>
+                        {{$cont = 1}}
                         @foreach($history as $h)
                             <tr>
-                                <td>{{ $h->shares['name'] }}</td>
+                                <td>{{$cont++ . ' - ' . $h->shares['name'] }}</td>
                                 <td>{{ $h->shares['base_price'] }}</td>
                                 <td>{{ $h->count }}</td>
                                 <td>{{ $h->shares['amount'] }}</td>

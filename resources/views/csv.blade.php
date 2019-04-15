@@ -23,7 +23,8 @@
 
                             {{-- Campos do csv --}}
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label form-control-label">Csv exemplo: Katarina,1,3 </label>
+                                <label class="col-lg-4 col-form-label form-control-label">Csv exemplo: Katarina,1,3 </label>
+                                <label class="col-lg-5 col-form-label form-control-label">Corretores secundários devem ser separados com "-" Exemplo: 1-2-3 </label>
     
                             </div>
 
