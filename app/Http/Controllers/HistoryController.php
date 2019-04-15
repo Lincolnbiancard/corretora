@@ -27,7 +27,10 @@ class HistoryController extends Controller
     {
 
         if (is_null($param)) {
-            $history = $this->history->all();
+            $history = $this->history
+            ->orderByRaw('updated_at DESC')
+            ->get(); // Ordem cronológica invertida
+
         } else if (strlen($param) == 1 && !is_numeric($param)) {
             $history = $this->history
             ->where('name', 'LIKE', $param . '%');
@@ -81,4 +84,19 @@ class HistoryController extends Controller
         
         return view('formHistory')->with('shares', $shares)->with('customers', $customers);
     }
+
+    public function listBought(){
+        
+        $history = $this->history
+            ->select(DB::raw('sum(h.quantity) as count, h.id_share', 'c.name', 's.name')) 
+            ->from('history AS h')
+            ->join('shares AS s', 's.id', '=', 'h.id_share')
+            ->join('customers AS c', 'c.id', '=', 'h.id_customer')
+            ->groupBy('h.id_share')
+            ->orderByRaw('count DESC')
+            ->get(); 
+        
+        return view('listBought')->with('history', $history);
+    }
+
 }

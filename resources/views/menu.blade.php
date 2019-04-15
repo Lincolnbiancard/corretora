@@ -12,6 +12,7 @@
             <li class="nav-item active"><a class="nav-link" href="{{ url('share') }}">Ações</a></li>
             <li class="nav-item active"><a class="nav-link" href="{{ url('listhistory') }}">Movimentação de Ações</a></li>
             <li class="nav-item active"><a class="nav-link" href="{{ url('csv') }}">Arquivo CSV</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{{ url('listbought') }}">Ranking de Ações</a></li>
         </ul>
     </div>
 </nav>

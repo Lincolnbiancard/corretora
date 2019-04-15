@@ -71,3 +71,5 @@ Route::delete('/history/destroy/{id}', 'HistoryController@destroy');
 Route::post('/listhistory/{param?}', 'HistoryController@search');
 
 Route::post('/search/{param}', 'SearchController@search');
+
+Route::get('/listbought', 'HistoryController@listBought');
