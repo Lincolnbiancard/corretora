@@ -113,9 +113,11 @@ html, body {
 }
 
 table {
-  margin: 50px 600px;
+  margin-left: 600px;
 }
 
-.btn-add {
-  margin: 500px 500px;
+#btn-action {
+  margin-top: 15px; 
+  margin-left: 585px;
+  margin-bottom: 18px;
 }

@@ -73,3 +73,8 @@ Route::post('/listhistory/{param?}', 'HistoryController@search');
 Route::post('/search/{param}', 'SearchController@search');
 
 Route::get('/listbought', 'HistoryController@listBought');
+
+
+Route::get('/', function(){
+    return redirect('listbought');
+});

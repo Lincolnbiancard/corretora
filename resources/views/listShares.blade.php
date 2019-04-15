@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<a href="{{ url('formshare') }}" class="btn btn-primary btn-sm">Add Ação</a>
+<a id="btn-action" href="{{ url('formshare') }}" class="btn btn-primary">Adicionar Ação</a>
     <div class="row align-content-center">
             <table class="lin-table">
                 <thead>

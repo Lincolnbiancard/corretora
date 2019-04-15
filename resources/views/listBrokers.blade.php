@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<a href="formbroker" id="btn-add" class="btn btn-primary btn-sm">Add Corretor</a>
+<a href="formbroker" id="btn-action" class="btn btn-primary">Adicionar Corretor</a>
     <div class="row align-content-center">
             <table class="lin-table">
                 <thead>

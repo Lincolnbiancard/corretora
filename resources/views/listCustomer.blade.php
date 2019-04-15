@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<a href="{{ url('formcustomer') }}" class="btn btn-primary btn-sm">Add Cliente</a>
+<a id="btn-action" href="{{ url('formcustomer') }}" class="btn btn-primary">Adicionar Cliente</a>
     <div class="row align-content-center">
             <table class="lin-table">
                 <thead>

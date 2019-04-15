@@ -2,20 +2,18 @@
 
 @section('content')
 
-
-
     {{-- Buscar --}}
     <form style=" margin-top: 15px; margin-left: 585px;" action="{{  url('search/history') }}" method="POST">
             <div class="input-group">
                 {{ csrf_field() }}
-                <input type="text" class="form-control col-sm-5" name="search" placeholder="Digite um ID, uma letra ou palavra" required>
+                <input type="text" class="form-control col-sm-6" name="search" placeholder="Digite um ID, uma letra ou palavra" required>
                 <span class="input-group-btn">
                     <button class="btn btn-success" type="submit">Buscar</button>
                 </span>
             </div><!-- /input-group -->
     </form>
     
-    <a style=" margin-top: 15px; margin-left: 585px;" href="{{ url('formhistory') }}" class="btn btn-primary">Comprar/Vender Ações</a>
+    <a id="btn-action" href="{{ url('formhistory') }}" class="btn btn-primary">Comprar/Vender Ações</a>
 
     <div class="row align-content-center">
             <table class="lin-table">
