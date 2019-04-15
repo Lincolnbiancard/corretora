@@ -18,11 +18,11 @@
                         @foreach($newCostumers as $customer)
                             <tr>
                                 <td>{{ $customer->id . " - " . $customer->name}}</td>
-                                @if(is_null($customer->brokers['name']))
-                                    <td>Sem corretor associado</td>
-                                @else
-                                    <td>{{ $customer->brokers['name'] }}</td>
-                                @endif
+                                    @if(is_null($customer->brokers['name']))
+                                        <td>Sem corretor associado</td>
+                                    @else
+                                        <td>{{ $customer->brokers['name'] }}</td>
+                                    @endif
                                 <td>
                                     @foreach($customer->overBrokers as $broker)
                                         {{$broker['name']}}
