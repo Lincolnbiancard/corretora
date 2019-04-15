@@ -21,6 +21,12 @@
                                 </div>
                             </div>
 
+                            {{-- Campos do csv --}}
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Csv exemplo: Katarina,1,3 </label>
+    
+                            </div>
+
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label"></label>
                                 <div class="col-lg-9">

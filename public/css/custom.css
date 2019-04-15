@@ -111,3 +111,11 @@ html, body {
   display: block;
   font-size: 18px;
 }
+
+table {
+  margin: 50px 600px;
+}
+
+.btn-add {
+  margin: 500px 500px;
+}

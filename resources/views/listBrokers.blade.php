@@ -1,11 +1,8 @@
 @extends('layout')
 
 @section('content')
-<a href="formbroker" class="btn btn-primary btn-sm">Add Corretor</a>
+<a href="formbroker" id="btn-add" class="btn btn-primary btn-sm">Add Corretor</a>
     <div class="row align-content-center">
-        <div class="col-sm">
-            Uma de três colunas
-        <div class="col-sm">
             <table class="lin-table">
                 <thead>
                     <tr>
