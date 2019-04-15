@@ -99,4 +99,26 @@ class HistoryController extends Controller
         return view('listBought')->with('history', $history);
     }
 
+    public function init() {
+        $customers = $this->customers->all();
+        $history = $this->history->all();
+        $acoesVendidas = 0;
+        $qtdeCliente = 0;
+        $cont = 1;
+
+        foreach ($customers as $c) {
+            $c->qtdeCliente;
+            $qtdeCliente += $cont;
+        }
+
+        foreach ($history as $h) {
+            $acoesVendidas += $h->quantity;
+        }
+
+        return view('index', [
+            'acoesVendidas' => $acoesVendidas,
+            'qtdeCliente' => $qtdeCliente
+            ]);
+    }
+
 }

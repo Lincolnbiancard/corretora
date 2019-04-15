@@ -1,5 +1,21 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| ROUTE INDEX
+|--------------------------------------------------------------------------
+|
+| Rota Inicial do sistema
+|
+*/
+
+Route::get('/init', 'HistoryController@init');
+
+Route::get('/', function(){
+    return redirect('init');
+});
+
 /*
 |--------------------------------------------------------------------------
 | ROUTES BROKERS
@@ -75,6 +91,3 @@ Route::post('/search/{param}', 'SearchController@search');
 Route::get('/listbought', 'HistoryController@listBought');
 
 
-Route::get('/', function(){
-    return redirect('listbought');
-});
