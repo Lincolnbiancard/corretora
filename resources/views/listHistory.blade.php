@@ -40,7 +40,7 @@
                     @else
                         @foreach($history as $h)
                             <tr>
-                                <td>{{ $h->customers->name }}</td>
+                                <td>{{ $h->customers['name'] }}</td>
                                 <td>{{ $h->shares['name'] }}</td>
                                 <td>{{ $h->quantity }}</td>
                                 <td>{{ $h->base_price }}</td>

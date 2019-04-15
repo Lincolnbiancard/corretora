@@ -20,15 +20,17 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $customers = $this->customers->with('brokers')->get();
+        $customers = $this->customers->get();
         
         return view('listcustomer')->with('customers', $customers);
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
-        $this->customers->create($data);
+        $customer = $this->customers->create($request->except('over_brokers'));
+        $overBrokers = $request->over_brokers;
+
+        $customer->overBrokers()->attach($overBrokers);
 
         return redirect('customer');
     }
@@ -63,5 +65,46 @@ class CustomerController extends Controller
         $brokers = $this->brokers->all();
         
         return view('formCustomer')->with('brokers', $brokers);
+    }
+
+    public function csv()
+    {
+        return view('csv');
+    }
+
+    public function upload(Request $request)
+    {
+        $file = fopen($request->file('archive'), 'r');
+        $customersId = [];
+        $items = [];
+
+        while (($line = fgetcsv($file)) !== FALSE) {
+            foreach($line as $key => $value)
+            {
+                $line[$key] = utf8_encode($value);
+            }
+            $items[] = $line;
+        }       
+
+        $dataCostumers = array_map(function($item){
+            return [
+                'name' => $item[0],
+                'preferencial_broker' => $item[1],
+                'over_brokers' => $item[2]
+            ];
+        }, $items);
+
+        foreach ($dataCostumers as $item) {
+            $overBrokers = array_pop($item);
+
+            $customer = $this->customers->create($item);
+            $customer->overBrokers()->attach(explode('-', $overBrokers));
+
+            array_push($customersId, $customer->id);
+        }
+
+        $customers = $this->customers->findMany($customersId);
+
+        return redirect('customer')->with('newCostumers', $customers);
     }
 }

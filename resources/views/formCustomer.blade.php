@@ -11,12 +11,12 @@
                     </div>
                     <div class="card-body">
                         <form class="form" role="form" autocomplete="off" action="customer" method="POST">
-                            {{ csrf_field() }}
+                            @csrf
                             
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label">Nome do Cliente</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" id="name" name="name" type="text">
+                                    <input class="form-control" id="name" name="name" type="text" required>
                                 </div>
                             </div>
                             
@@ -24,7 +24,18 @@
                                 <label class="col-lg-3 col-form-label form-control-label">Corretor Preferencial</label>
                                 <div class="col-lg-9">
                                     <select id="preferencial_broker" name="preferencial_broker" placeholder="Corretor Preferencial" 
-                                      class="form-control" required="true">
+                                      class="form-control" required>
+                                            @foreach($brokers as $broker)
+                                                <option value="{{$broker->id}}">{{$broker->name}}</option>
+                                            @endforeach 
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Corretores Secundários</label>
+                                <div class="col-lg-9">
+                                    <select name="over_brokers[]" id="over_brokers" style="width: 100%" multiple="multiple" required>
                                             @foreach($brokers as $broker)
                                                 <option value="{{$broker->id}}">{{$broker->name}}</option>
                                             @endforeach 
@@ -46,4 +57,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>        
+        $(document).ready(function(){
+            $('#over_brokers').select2();
+        });
+    </script>
 @endsection

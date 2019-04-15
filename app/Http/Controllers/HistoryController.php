@@ -81,5 +81,4 @@ class HistoryController extends Controller
         
         return view('formHistory')->with('shares', $shares)->with('customers', $customers);
     }
-
 }

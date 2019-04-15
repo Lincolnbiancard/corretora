@@ -14,6 +14,10 @@ class Customers extends Model
         return $this->hasOne('App\Models\Brokers', 'id', 'preferencial_broker');
     }
 
+    public function overBrokers()
+    {        
+        return $this->belongsToMany('App\Models\Brokers', 'customer_broker', 'customer_id', 'broker_id');
+    }
 }
 
 

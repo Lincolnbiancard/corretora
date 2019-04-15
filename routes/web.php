@@ -26,6 +26,10 @@ Route::resource('/broker', 'BrokerController');
 |
 */
  
+Route::get('/csv', 'CustomerController@csv');
+
+Route::post('/upload', 'CustomerController@upload');
+
 Route::get('/formcustomer', 'CustomerController@formCustomerCreate');
 
 Route::resource('/customer', 'CustomerController');
