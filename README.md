@@ -4,7 +4,7 @@ Api para corretores analisarem o perfil de compra e venda de ações do cliente,
 
 Passo a passo para rodar a api:
 
-Após baixar o projeto esxecute os seguintes comandos no projeto:
+Após baixar o projeto execute os seguintes comandos no projeto:
 
 1 - npm install
 
